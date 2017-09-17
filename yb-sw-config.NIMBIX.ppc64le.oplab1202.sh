@@ -2,11 +2,11 @@
 #!/bin/bash
 ####################################################################################################
 #                                                                                                  #
-# yb--sw-config.NIMBIX.x8664.turbotensor.sh - Software installs & configuration for Ubuntu TF Lab  #
+# yb--sw-config.NIMBIX.ppc64le.oplab1202.sh - Software installs & configuration for Ubuntu         #
 #                                                                                                  #
 # Copyright (C) 2017 Yayworks, Inc. - All Rights Reserved                                          #
 #                                                                                                  #
-# Last revised 08/09/2017                                                                          #
+# Last revised 09/17/2017                                                                          #
 #                                                                                                  #
 ####################################################################################################
 
