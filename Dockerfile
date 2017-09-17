@@ -26,8 +26,8 @@ RUN pip3 install virtualenv && \
     pip3 install --upgrade notebook
 
 
-ADD ./yb-sw-config.NIMBIX.pwr8.OPLab1202.sh /tmp/yb-sw-config.NIMBIX.pwr8.OPLab1202.sh
-RUN /bin/bash -x /tmp/yb-sw-config.NIMBIX.pwr8.OPLab1202.sh 
+ADD ./yb-sw-config.NIMBIX.ppc64le.oplab1202.sh /tmp/yb-sw-config.NIMBIX.ppc64le.oplab1202.sh
+RUN /bin/bash -x /tmp/yb-sw-config.NIMBIX.ppc64le.oplab1202.sh 
 
 
 ADD ./jupyterhub_config.py /usr/local
