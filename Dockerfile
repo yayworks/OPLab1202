@@ -25,14 +25,8 @@ RUN /bin/bash -x /tmp/yb-sw-config.NIMBIX.ppc64le.oplab1202.sh
 
 
 ADD ./jupyterhub_config.py /usr/local
-ADD ./config.sh /usr/local/config.sh
-ADD ./start.sh /usr/local/start.sh
-ADD ./setup.x /usr/local/setup.x
 ADD ./jpy_lab_start.sh /usr/local/jpy_lab_start.sh
-RUN chmod +x /usr/local/config.sh && chown nimbix.nimbix /usr/local/config.sh && \
-    chmod +x /usr/local/start.sh && chown nimbix.nimbix /usr/local/start.sh && \
-    chmod +x /usr/local/setup.x && chown nimbix.nimbix /usr/local/setup.x && \
-    chmod +x /usr/local/jpy_lab_start.sh && \
+RUN chmod +x /usr/local/jpy_lab_start.sh && \
     
     wget -O- -q http://s3tools.org/repo/deb-all/stable/s3tools.key | sudo apt-key add - && \
     sudo wget -O/etc/apt/sources.list.d/s3tools.list http://s3tools.org/repo/deb-all/stable/s3tools.list && \
