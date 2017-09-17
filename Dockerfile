@@ -1,12 +1,6 @@
 FROM ipoddaribm/powerai-examples
 
-ADD ./NAE/help.html /etc/NAE/help.html
-
 WORKDIR /root
-
-
-FROM nimbix/base-ubuntu-nvidia:8.0-cudnn5-devel
-MAINTAINER Nimbix, Inc. <support@nimbix.net>
 
 RUN apt-get update && apt-get install -y \
     build-essential \
