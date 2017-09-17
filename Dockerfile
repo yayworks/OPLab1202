@@ -26,23 +26,23 @@ RUN /bin/bash -x /tmp/yb-sw-config.NIMBIX.ppc64le.oplab1202.sh
 
 ADD ./jupyterhub_config.py /usr/local
 ADD ./jpy_lab_start.sh /usr/local/jpy_lab_start.sh
-RUN chmod +x /usr/local/jpy_lab_start.sh && \
+##RUN chmod +x /usr/local/jpy_lab_start.sh && \
     
-    wget -O- -q http://s3tools.org/repo/deb-all/stable/s3tools.key | sudo apt-key add - && \
-    sudo wget -O/etc/apt/sources.list.d/s3tools.list http://s3tools.org/repo/deb-all/stable/s3tools.list && \
-    sudo apt-get update && \
-    sudo apt-get install s3cmd && \
-    sudo apt-get install -y gfortran && \
-    sudo apt-get update && \
+##    wget -O- -q http://s3tools.org/repo/deb-all/stable/s3tools.key | sudo apt-key add - && \
+##    sudo wget -O/etc/apt/sources.list.d/s3tools.list http://s3tools.org/repo/deb-all/stable/s3tools.list && \
+##    sudo apt-get update && \
+##    sudo apt-get install s3cmd && \
+##    sudo apt-get install -y gfortran && \
+##    sudo apt-get update && \
 
-    /usr/local/anaconda3/envs/tensorflow/bin/pip install numpy scipy && \
-    /usr/local/anaconda3/envs/tensorflow/bin/pip install scikit-learn && \
-    /usr/local/anaconda3/envs/tensorflow/bin/pip install pillow && \
-    /usr/local/anaconda3/envs/tensorflow/bin/conda install h5py && \
-    /usr/local/anaconda3/envs/tensorflow/bin/pip install keras && \
-    /usr/local/anaconda3/envs/tensorflow/bin/pip install gensim && \
-    /usr/local/anaconda3/envs/tensorflow/bin/pip install theano && \
-    /usr/local/anaconda3/envs/tensorflow/bin/pip install tensorboard
+##    /usr/local/anaconda3/envs/tensorflow/bin/pip install numpy scipy && \
+##    /usr/local/anaconda3/envs/tensorflow/bin/pip install scikit-learn && \
+##    /usr/local/anaconda3/envs/tensorflow/bin/pip install pillow && \
+##    /usr/local/anaconda3/envs/tensorflow/bin/conda install h5py && \
+##    /usr/local/anaconda3/envs/tensorflow/bin/pip install keras && \
+##    /usr/local/anaconda3/envs/tensorflow/bin/pip install gensim && \
+##    /usr/local/anaconda3/envs/tensorflow/bin/pip install theano && \
+##    /usr/local/anaconda3/envs/tensorflow/bin/pip install tensorboard
 
 RUN echo 'export PATH=/usr/local/cuda/bin:/usr/local/anaconda3/envs/tensorflow/bin:$PATH' >> /home/nimbix/.bashrc \
 &&  echo 'export PYTHONPATH=/usr/local/anaconda3/envs/tensorflow/lib/python3.6:/usr/local/anaconda3/envs/tensorflow/lib/python3.6/site-packages/:/usr/local/anaconda3/envs/tensorflow/lib/python3.6/site-packages/prettytensor-0.7.2-py3.6.egg:/usr/local/anaconda3/envs/tensorflow/lib/python3.6/site-packages/enum34-1.1.6-py3.6.egg:/usr/local/anaconda3/envs/tensorflow/lib/python3.6/site-packages/matplotlib:$PYTHONPATH' >> /home/nimbix/.bashrc \
