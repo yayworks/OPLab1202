@@ -5,7 +5,7 @@ WORKDIR /root
 RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
-    wget \
+    wget && \
     apt-get install -y python3.4 && \
     apt-get install -y python3-pip && \
     apt-get install -y nodejs-legacy && \
