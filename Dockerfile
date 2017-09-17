@@ -1,3 +1,9 @@
+FROM ipoddaribm/powerai-examples
+
+ADD ./NAE/help.html /etc/NAE/help.html
+
+WORKDIR /root
+
 
 FROM nimbix/base-ubuntu-nvidia:8.0-cudnn5-devel
 MAINTAINER Nimbix, Inc. <support@nimbix.net>
@@ -6,17 +12,6 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
     wget \
-    libibverbs-dev \
-    libibverbs1 \
-    librdmacm1 \
-    librdmacm-dev \
-    rdmacm-utils \
-    libibmad-dev \
-    libibmad5 \
-    byacc \
-    libibumad-dev \
-    libibumad3 \
-    flex && \
     apt-get install -y python3.4 && \
     apt-get install -y python3-pip && \
     apt-get install -y nodejs-legacy && \
@@ -31,23 +26,11 @@ RUN pip3 install virtualenv && \
     pip3 install --upgrade notebook
 
 
-
-
-ENV MPI_VERSION 2.0.1
-ADD ./install-ompi.sh /tmp/install-ompi.sh
-RUN /bin/bash -x /tmp/install-ompi.sh && \
-    rm -rf /tmp/install-ompi.sh
-
-ENV OSU_VERSION 5.3.2
-ADD ./install-osu.sh /tmp/install-osu.sh
-RUN /bin/bash -x /tmp/install-osu.sh && rm -rf /tmp/install-osu.sh
-
-ADD ./yb-sw-config.NIMBIX.x8664.turbotensor.sh /tmp/yb-sw-config.NIMBIX.x8664.turbotensor.sh
-RUN /bin/bash -x /tmp/yb-sw-config.NIMBIX.x8664.turbotensor.sh 
+ADD ./yb-sw-config.NIMBIX.pwr8.OPLab1202.sh /tmp/yb-sw-config.NIMBIX.pwr8.OPLab1202.sh
+RUN /bin/bash -x /tmp/yb-sw-config.NIMBIX.pwr8.OPLab1202.sh 
 
 
 ADD ./jupyterhub_config.py /usr/local
-ADD ./wetty.tar.gz /usr/local
 ADD ./config.sh /usr/local/config.sh
 ADD ./start.sh /usr/local/start.sh
 ADD ./setup.x /usr/local/setup.x
@@ -79,8 +62,8 @@ RUN echo 'export PATH=/usr/local/cuda/bin:/usr/local/anaconda3/envs/tensorflow/b
 &&  echo 'export PYTHONPATH=/usr/local/anaconda3/envs/tensorflow/lib/python3.6:/usr/local/anaconda3/envs/tensorflow/lib/python3.6/site-packages/:/usr/local/anaconda3/envs/tensorflow/lib/python3.6/site-packages/prettytensor-0.7.2-py3.6.egg:/usr/local/anaconda3/envs/tensorflow/lib/python3.6/site-packages/enum34-1.1.6-py3.6.egg:/usr/local/anaconda3/envs/tensorflow/lib/python3.6/site-packages/matplotlib:$PYTHONPATH' >> /etc/skel/.bashrc
     
 WORKDIR /home/nimbix
-RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/admin/yb-admin.NIMBIX.x86_64.tar \
-&& tar xvf yb-admin.NIMBIX.x86_64.tar -C /usr/bin \
+RUN /usr/bin/wget https://s3.amazonaws.com/yb-lab-cfg/admin/yb-admin.NIMBIX.pwr8.tar \
+&& tar xvf yb-admin.NIMBIX.pwr8.tar -C /usr/bin \
 && sudo apt-get install -y tcl \
 && sudo apt-get install -y git 
     
