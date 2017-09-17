@@ -23,6 +23,10 @@ RUN pip3 install virtualenv && \
 ADD ./yb-sw-config.NIMBIX.ppc64le.oplab1202.sh /tmp/yb-sw-config.NIMBIX.ppc64le.oplab1202.sh
 RUN /bin/bash -x /tmp/yb-sw-config.NIMBIX.ppc64le.oplab1202.sh 
 
+#add NIMBIX application
+COPY AppDef.json /etc/NAE/AppDef.json
+RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice/validate 
+
 
 ADD ./jupyterhub_config.py /usr/local
 ADD ./jpy_lab_start.sh /usr/local/jpy_lab_start.sh
