@@ -45,7 +45,10 @@ RUN chmod +x /usr/local/jpy_lab_start.sh && \
     /usr/local/anaconda3/bin/conda install h5py && \
     /usr/local/anaconda3/bin/pip install keras && \
     /usr/local/anaconda3/bin/pip install gensim && \
-    /usr/local/anaconda3/bin/pip install theano 
+    /usr/local/anaconda3/bin/pip install theano && \
+    /usr/local/anaconda3/bin/pip install jupyterlab && \
+    /usr/local/anaconda3/bin/jupyter serverextension enable --py jupyterlab --sys-prefix
+
 ##    /usr/local/anaconda3/bin/pip install tensorboard && \
 
 RUN echo 'export PATH=/usr/local/cuda/bin:/usr/local/anaconda3/envs/tensorflow/bin:$PATH' >> /home/nimbix/.bashrc \
